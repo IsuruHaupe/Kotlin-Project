@@ -14,7 +14,7 @@ class BookDtoMapper : DomainMapperInterface<BookDto, Book>{
         )
     }
 
-    fun ToDomainList(from : List<BookDto>) : List<Book> {
+    fun toDomainList(from : List<BookDto>) : List<Book> {
         return from.map { mapToDomainModel(it) }
     }
 }
