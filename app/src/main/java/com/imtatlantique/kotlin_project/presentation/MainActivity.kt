@@ -1,23 +1,18 @@
-package com.imtatlantique.kotlin_project
+package com.imtatlantique.kotlin_project.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import com.google.gson.GsonBuilder
-import com.imtatlantique.kotlin_project.network.BookService
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers.IO
-import kotlinx.coroutines.launch
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import com.imtatlantique.kotlin_project.R
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-
-
+        /*
         val service = Retrofit.Builder()
             .baseUrl("https://henri-potier.techx.fr/")
             .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
@@ -28,5 +23,6 @@ class MainActivity : AppCompatActivity() {
             val book = service.query()
             Log.d("MainActivity", "onCreate : ${book.map { it.title }}")
         }
+        */
     }
 }

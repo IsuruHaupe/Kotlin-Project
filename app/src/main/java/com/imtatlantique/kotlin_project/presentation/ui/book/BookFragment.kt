@@ -1,15 +1,12 @@
-package com.imtatlantique.kotlin_project
+package com.imtatlantique.kotlin_project.presentation.ui.book
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Button
 import androidx.compose.material.Text
-import androidx.navigation.findNavController
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.text.TextStyle
@@ -18,8 +15,21 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import com.imtatlantique.kotlin_project.presentation.ui.book_list.BookListViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-class BookListFragment : Fragment() {
+@AndroidEntryPoint
+class BookFragment : Fragment() {
+
+    val viewModel : BookListViewModel by activityViewModels()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        println("BookFragment: ${viewModel}")
+    }
+
+
     @ExperimentalUnitApi
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,13 +40,9 @@ class BookListFragment : Fragment() {
             setContent {
                 Column(modifier = Modifier.padding(16.dp)) {
                     Text(
-                        text = "Henri Potier Collection",
+                        text = "Henri Potier Livre",
                         style = TextStyle(fontSize = TextUnit(value = 21F, type = TextUnitType.Sp))
                     )
-                    Spacer(modifier = Modifier.padding(10.dp))
-                    Button(onClick = { findNavController().navigate(R.id.viewBook) }) {
-                        Text(text = "TO BOOK")
-                    }
                 }
             }
         }

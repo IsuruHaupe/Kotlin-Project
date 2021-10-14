@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/bookListFragment"
-        android:name="com.imtatlantique.kotlin_project.BookListFragment"
+        android:name="com.imtatlantique.kotlin_project.presentation.ui.book_list.BookListFragment"
         android:label="BookListFragment" >
         <action
             android:id="@+id/viewBook"
@@ -14,6 +14,6 @@
     </fragment>
     <fragment
         android:id="@+id/bookFragment"
-        android:name="com.imtatlantique.kotlin_project.BookFragment"
+        android:name="com.imtatlantique.kotlin_project.presentation.ui.book.BookFragment"
         android:label="BookFragment" />
 </navigation>
