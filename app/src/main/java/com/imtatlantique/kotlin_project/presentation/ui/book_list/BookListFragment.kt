@@ -1,6 +1,8 @@
 package com.imtatlantique.kotlin_project.presentation.ui.book_list
 
+import TAG
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,12 +29,6 @@ import dagger.hilt.android.AndroidEntryPoint
 class BookListFragment : Fragment() {
     val viewModel : BookListViewModel by activityViewModels()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        println("BookListFragment: ${viewModel.getRepo()}")
-
-    }
-
     @ExperimentalUnitApi
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,6 +37,11 @@ class BookListFragment : Fragment() {
     ): View {
         return ComposeView(requireContext()).apply {
             setContent {
+                val books = viewModel.books.value
+
+                for(book in books){
+                    Log.d(TAG, "oncreateView: ${book.title}")
+                }
                 Column(modifier = Modifier.padding(16.dp)) {
                     Text(
                         text = "Henri Potier Collection",
