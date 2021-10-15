@@ -9,6 +9,8 @@ import android.view.ViewGroup
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.navigation.findNavController
@@ -22,6 +24,7 @@ import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import com.imtatlantique.kotlin_project.BookCard
 import com.imtatlantique.kotlin_project.R
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -39,17 +42,12 @@ class BookListFragment : Fragment() {
             setContent {
                 val books = viewModel.books.value
 
-                for(book in books){
-                    Log.d(TAG, "oncreateView: ${book.title}")
-                }
-                Column(modifier = Modifier.padding(16.dp)) {
-                    Text(
-                        text = "Henri Potier Collection",
-                        style = TextStyle(fontSize = TextUnit(value = 21F, type = TextUnitType.Sp))
-                    )
-                    Spacer(modifier = Modifier.padding(10.dp))
-                    Button(onClick = { findNavController().navigate(R.id.viewBook) }) {
-                        Text(text = "TO BOOK")
+                LazyColumn{
+                    itemsIndexed(
+                        items = books
+                    ) { index, book ->
+                        BookCard(book = book, onClick = {})
+
                     }
                 }
             }

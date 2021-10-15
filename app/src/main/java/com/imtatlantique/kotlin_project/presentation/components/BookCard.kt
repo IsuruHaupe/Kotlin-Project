@@ -1,6 +1,5 @@
 package com.imtatlantique.kotlin_project
 
-import android.text.Layout
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -10,11 +9,19 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.asImageBitmap
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.imtatlantique.kotlin_project.domain.model.Book
+import com.imtatlantique.kotlin_project.util.DEFAULT_BOOK_IMAGE
+import com.imtatlantique.kotlin_project.util.loadPicture
 
 @Composable
-fun BookCard( book : Book, onClick : ()-> Unit){
+fun BookCard(
+    book : Book,
+    onClick : ()-> Unit
+){
     Card (
         shape = MaterialTheme.shapes.small,
         modifier = Modifier
@@ -28,11 +35,17 @@ fun BookCard( book : Book, onClick : ()-> Unit){
             ) {
         Column {
             book.cover?.let { url ->
-                //TODO add image
-              //  Image(
-               // bitmap = imageResource(id = R.draw)
-              //  modifier = Modifier.fillMaxWidth().preferred
-               // )
+                val image = loadPicture(url = url, defaultImage = DEFAULT_BOOK_IMAGE).value
+                image?.let { img ->
+                    Image(
+                        bitmap = img.asImageBitmap(),
+                        contentDescription = "book cover",
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(225.dp),
+                        contentScale = ContentScale.FillBounds
+                    )
+                }
             }
             book.title?.let { title ->
                 Row(modifier = Modifier

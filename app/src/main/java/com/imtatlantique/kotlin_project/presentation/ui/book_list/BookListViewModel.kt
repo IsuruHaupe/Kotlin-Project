@@ -20,16 +20,16 @@ constructor(
     private val repository: BookRepository
 ) : ViewModel(){
 
-    public val books: MutableState<List<Book>> = mutableStateOf(listOf())
+    val books: MutableState<List<Book>> = mutableStateOf(ArrayList())
 
     init {
-        //TODO in the tuto i call a function search
-     /*   viewModelScope.launch {
-            val result = repository.search(
-
-            )
-        }*/
+        searchBooks()
     }
 
-    fun getRepo() = repository
+    fun searchBooks() {
+        viewModelScope.launch {
+            val result = repository.query_api()
+            books.value = result
+        }
+    }
 }
