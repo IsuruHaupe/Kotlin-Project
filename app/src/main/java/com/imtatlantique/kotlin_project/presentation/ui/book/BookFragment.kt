@@ -16,17 +16,24 @@ import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import com.imtatlantique.kotlin_project.domain.model.Book
+import com.imtatlantique.kotlin_project.presentation.BaseApplication
+import com.imtatlantique.kotlin_project.presentation.components.BookView
 import com.imtatlantique.kotlin_project.presentation.ui.book_list.BookListViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class BookFragment : Fragment() {
-
-    val viewModel : BookListViewModel by activityViewModels()
-
+    @Inject
+    lateinit var application: BaseApplication
+    //val viewModel : BookListViewModel by activityViewModels()
+    private var book = Book()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        println("BookFragment: ${viewModel}")
+        arguments?.getParcelable<Book>("book")?.let { b ->
+            this.book = b
+        }
     }
 
 
@@ -38,12 +45,7 @@ class BookFragment : Fragment() {
     ): View {
         return ComposeView(requireContext()).apply {
             setContent {
-                Column(modifier = Modifier.padding(16.dp)) {
-                    Text(
-                        text = "Henri Potier Livre",
-                        style = TextStyle(fontSize = TextUnit(value = 21F, type = TextUnitType.Sp))
-                    )
-                }
+                BookView(book = book)
             }
         }
     }

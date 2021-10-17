@@ -59,7 +59,7 @@ fun BookCard(
                         style = MaterialTheme.typography.h5
                     )
                     Text(
-                        text = book.price.toString(),
+                        text = "${book.price.toString()} €",
                         modifier = Modifier
                             .fillMaxWidth()
                             .wrapContentWidth(
