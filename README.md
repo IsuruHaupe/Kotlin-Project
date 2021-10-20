@@ -6,10 +6,9 @@ Project kotlin dans le cadre de notre formation Développement mobile sur Androi
   - Glenn LOUARN
   
 ## Dépendance
-  - material 
+  - jetpack-compose
   - retrofit
   - converter-gson
-  - jetpack-compose
   - glide
   - hilt
   
