@@ -15,7 +15,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.imtatlantique.kotlin_project.domain.model.Book
-import com.imtatlantique.kotlin_project.util.DEFAULT_BOOK_IMAGE
 import com.imtatlantique.kotlin_project.util.loadPicture
 
 @Composable
@@ -28,7 +27,7 @@ fun BookView(
         .verticalScroll(scrollState)
     ) {
         book.cover?.let { url ->
-            val image = loadPicture(url = url, defaultImage = DEFAULT_BOOK_IMAGE).value
+            val image = loadPicture(url = url, defaultImage = 0).value
             image?.let { img ->
                 Image(
                     bitmap = img.asImageBitmap(),

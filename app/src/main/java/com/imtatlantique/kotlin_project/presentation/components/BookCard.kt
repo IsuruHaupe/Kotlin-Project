@@ -11,10 +11,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.imtatlantique.kotlin_project.domain.model.Book
-import com.imtatlantique.kotlin_project.util.DEFAULT_BOOK_IMAGE
 import com.imtatlantique.kotlin_project.util.loadPicture
 
 @Composable
@@ -35,7 +33,7 @@ fun BookCard(
             ) {
         Column {
             book.cover?.let { url ->
-                val image = loadPicture(url = url, defaultImage = DEFAULT_BOOK_IMAGE).value
+                val image = loadPicture(url = url, defaultImage = 0).value
                 image?.let { img ->
                     Image(
                         bitmap = img.asImageBitmap(),
