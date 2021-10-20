@@ -1,5 +1,5 @@
 # Kotlin-Project
-Project kotlin dans le cadre de notre formation Développement mobile sur Android en 3éme années.
+Project kotlin dans le cadre de notre formation Développement mobile sur Android en 3éme années à l'IMT Atlantique.
 
 ## Membres du groupes
   - Isuru HAUPE
@@ -12,8 +12,10 @@ Project kotlin dans le cadre de notre formation Développement mobile sur Androi
   - glide
   - hilt
   
-## fonctionnalités développées
-  - Récupération des données avec des appels à l'API mise à disposition
-  - Affichage d'une grille avec tous les livres 
-  - Grille responsives au différents format et en mode paysage
-  - Affichage d'une deuxième page qu'on clique sur un livre pour voir les détails d'un livre
+## Fonctionnalités Développées
+  - Affichage des livres sous la forme d'une liste déroulante
+      - Les données sont récupérées avec retrofit et converti avec gson dans un format objet pour être utilisées dans l'application
+      - On charge les images avec glide
+  - Gestion du mode paysage
+  - Affichage des détails d'un livre (Description, ISBN) lorsqu'on clique sur un livre
+  - Utilisation de hilt pour l'injection de dépendance
